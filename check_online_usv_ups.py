@@ -642,7 +642,7 @@ class UpsStatus:
         perfdata_r.append("load_level=%d%%" % self.load_level)
         perfdata_r.append("temp_celsius=%s" % ("" if self.ups_temp is None else "%.1f°C" % self.ups_temp))
 
-        return ", ".join(perfdata_r)
+        return " ".join(perfdata_r)
 
 
 def nagios_threshold(val: str) -> NagiosThreshold:
