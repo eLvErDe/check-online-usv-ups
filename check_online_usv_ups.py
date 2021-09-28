@@ -610,11 +610,13 @@ class UpsStatus:
                 warning_reasons.append("Batt Remain: " + battery_remaining_warning_reason)
 
         if critical_reasons:
-            return 2, "CRITICAL: %s" % ", ".join(critical_reasons + warning_reasons)
+            return 2, "CRITICAL: UPS %s (S/N %s): %s" % (re.sub("\s+", " ", self.ups_type), self.serial_number, ", ".join(critical_reasons + warning_reasons))
         if warning_reasons:
-            return 1, "WARNING: %s" % ", ".join(warning_reasons)
+            return 1, "WARNING: UPS %s (S/N %s): %s" % (re.sub("\s+", " ", self.ups_type), self.serial_number, ", ".join(warning_reasons))
         else:
-            return 0, "OK: UPS is doing fine: in: %.1fV, %.1fHz, load: %d%%, remaining: %dmin, temp: %s°C" % (
+            return 0, "OK: UPS %s (S/N %s): in: %.1fV, %.1fHz, load: %d%%, remaining: %dmin, temp: %s°C" % (
+                re.sub("\s+", " ", self.ups_type),
+                self.serial_number,
                 self.cur_input_voltage,
                 self.cur_input_frequency,
                 self.load_level,
