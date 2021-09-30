@@ -26,7 +26,7 @@
 # For more information, please refer to <https://unlicense.org>
 
 """
-Parse Online USV UPS (www.online-usv.de) info and return current state as a Nagios check
+Parse Power Walker UPS (www.powerwalker.com) info and return current state as a Nagios check
 """
 
 
